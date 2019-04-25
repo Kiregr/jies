@@ -24,4 +24,8 @@ router.get('/Parents/:id', department_controller.getParents);
 router.get('/drop_down/form', department_controller.addDepartmentGetDropDown);
 router.post('/drop_down/form', department_controller.addDepartmentPostDropDown);
 
+router.post('/pepega', function(request, response){
+   response.sendStatus(200);
+});
+
 module.exports = router;

@@ -35,18 +35,6 @@ html
                             }
                         });
                     }
-                    /*
-                    form(method="post", action="/Departments/Add", id="add_department_form")
-                        p Введите имя:
-                        input(type="text", name="name")
-                        p Выберите главный департамент:
-                        input(type="text", name="parentid")
-                        p Введите Inn:
-                        input(type="text", name="inn")
-                        br
-                        br
-                        input(type="submit", value="Отправить")
-                    */
                 })
             }
             function loadEmployees(department_id, department_name){
@@ -102,38 +90,55 @@ html
                             url: `/Departments/Edit?id=${id}&parentId=${parentId}&name=${name}&inn=${inn}`,
                             type: 'GET',
                             success: function (data) {
-                                console.log(data);
+                                bootbox.dialog({
+                                    title: 'A custom dialog with buttons and callbacks',
+                                    message: data,
+                                    size: 'large',
+                                    buttons: {
+                                        cancel: {
+                                            label: "I'm a cancel button!",
+                                            className: 'btn-danger',
+                                            callback: function () {
+                                                console.log('Custom cancel clicked');
+                                            }
+                                        },
+                                        ok: {
+                                            label: "I'm an OK button!",
+                                            className: 'btn-info',
+                                            callback: function () {
+                                                $.ajax({
+                                                    url: `Departments/Edit`,
+                                                    type: "POST",
+                                                    data: {
+                                                        id: document.getElementById('idOfDepartment').value,
+                                                        parentId: document.getElementById('patentIdOfDepartment').value,
+                                                        name: document.getElementById('nameOfDepartment').value,
+                                                        inn: document.getElementById('innOfDepartment').value
+                                                    },
+                                                    success: function () {
+                                                        let tree = $('#tree').fancytree('getTree');
+                                                        tree.reload();
+                                                    }
+                                                })
+                                            }
+                                        },
+                                    }
+
+                                })
+                                /*
                                 bootbox.confirm(data, function (result) {
                                     if (result) {
-                                        //$('#edit_department_form').submit();
+                                        $('#edit_department_form').submit();
                                         let tree = $('#tree').fancytree('getTree');
                                         tree.reload();
                                     }
                                 });
+                                */
+                                /*
+
+                                */
                             }
                         });
-                        /*
-                        bootbox.confirm(`<form method="post" action="/Departments/Edit">
-                                          <div class="input">
-                                            <input type="hidden" name="id" value=${id}>
-                                            <p>Введите имя:</p>
-                                            <input type="text" name="name" value="${name}">
-                                            <p>Выберите родительский департамент:</p>
-                                            <input type="text" name="parentId" value="${parentId}">
-                                            <p>Введите Inn:</p>
-                                            <input type="text" name="inn" value="${inn}"><br><br>
-                                          </div>
-                                          <div class="actions">
-                                            <input type="submit" value="Отправить">
-                                          </div>
-                                        </form>`
-                        , function (res) {
-                                if(res) {
-                                    let tree = $('#tree').fancytree('getTree');
-                                    tree.reload();
-                                }
-                            });
-                        */
                     }
                 });
             }
@@ -281,22 +286,7 @@ html
                         loadEmployees(data.node.key, data.node.title);
                     },
                 });
-            })/*
-                .on('click', '.btnEdit', function () {
-                //var node = $("#tree").fancytree("getActiveNode");
-                //node.remove();
-                let node = $("#tree").fancytree("getActiveNode");
-                let department_id = node.key;
-                console.log("clickonedit");
-                //console.log(`"${$(this).text()}" pressed; Node key: ${node.key}`);
-                //document.location.replace(`/Departments/${department_id}`);
             })
-                */
-                /*
-                .on('click', '.btnDelete', function () {
-                console.log(`"${$(this).text()}" pressed`);
-                })
-                 */
                 .on('click', '.btnInit', function () {
                     console.log("Init tree");
                 $("#tree").fancytree();
@@ -328,3 +318,5 @@ html
         //p#sampleButtons Hello world
         //button.btnInit(type="button") Init
         button.btnTest(type='button', onclick='testBootBox(1)') Бутбоксики
+
+

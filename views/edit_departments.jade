@@ -1,21 +1,9 @@
-
-//form(method="post", action="/Departments/Edit", id="edit_department_form")
-//   input(type="hidden", name="id", value="#{id}")
-//   p Введите имя:
-//   input(type="text", name="name", value="#{name}")
-//   p Выберите родительский департамент:
-//   input(type="text", name="parentId", value="#{parentId}")
-//   p Введите Inn:
-//   input(type="text", name="inn", value="#{inn}")
-//   br
-//   br
-//   input(type="submit", value="Отправить")
-form(method="post", action="/Departments/Edit", id="add_department_form")
-    input(type="hidden", name="id", value="#{id}")
+form(method="post", action="/Departments/Edit", id="edit_department_form")
+    input(type="hidden", name="id", value="#{id}", id="idOfDepartment")
     p Введите имя:
-    input(type="text", name="name", value="#{name}")
+    input(type="text", name="name", value="#{name}", id="nameOfDepartment")
     p Выберите главный департамент:
-    select(name='parentId')
+    select(name='parentId', id="patentIdOfDepartment")
         each parent in parents
             if(parent.Name == name)
                 option(selected="", value="")  Нет родителя
@@ -24,8 +12,7 @@ form(method="post", action="/Departments/Edit", id="add_department_form")
             else if parent.Id != id
                 option(value=parent.Id) #{parent.Name}
     p Введите Inn:
-    input(type="text", name="inn", value="#{inn}")
-    br
-    br
-    h2 #{parents[0].Name}
-    input(type="submit", value="Отправить")
+    input(type="text", name="inn", value="#{inn}", id="innOfDepartment")
+    //br
+    //br
+    //input(type="submit", value="Отправить")

@@ -26,7 +26,7 @@ exports.addDepartmentPost = function(request, response){
     let department_name = request.body.name;
     let department_parentId = request.body.parentid;
     let department_inn = request.body.inn;
-    department_viewmodel.addDepartment(department_name, department_parentId, department_inn).then((data) => { console.log(data) });
+    department_viewmodel.addDepartment(department_name, department_parentId, department_inn).then((data) => { /*response.end();*/});
     //response.redirect("/Departments");
     //response.sendStatus(200);
 
@@ -90,7 +90,7 @@ exports.editDepartmentGet = function(request, response){
     });
     console.log("editDepartmentGet");
 };
-exports.editDepartmentPost = function(request, response){
+exports.editDepartmentPost = function(request, response, next){
     if(!request.body) return response.sendStatus(400);
     let department_id = request.body.id;
     let department_parentId = request.body.parentId;
@@ -99,7 +99,7 @@ exports.editDepartmentPost = function(request, response){
     console.log(`${department_parentId}`);
     department_viewmodel.editDepartment(department_id,department_name,department_parentId,department_inn);
     //response.redirect("/Departments");
-    //response.sendStatus(200);
+    response.sendStatus(200);
 };
 
 //Редактирование департамента по его id
