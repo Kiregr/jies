@@ -26,13 +26,13 @@ exports.deleteDepartment = function (id) {
         console.log("DONE SUCCESS");
         return 204;
     }).catch(function(error){
-        console.log("ERROR:");
+        console.log(`ERROR: ${error}`);
         return 403;
     });
 };
 //Редактирование работяги
 exports.editDepartment = function (id, name, parentId, inn) {
-    Department.update({
+    return Department.update({
         parentid: (parentId=="") ? null : parentId,
         name: name,
         inn: inn

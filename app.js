@@ -11,8 +11,9 @@ sequelize
     .then(()=>{
         console.log("Delo sdelano");
     })
-    .catch(err=>{
+    .catch(error =>{
         console.error("Error");
+        console.error(error);
     });
 
 app.set('view engine', 'jade');
@@ -21,10 +22,6 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 //использование статических файлов
 app.use(express.static('public'));
-//app.use('/images', express.static(__dirname + '/Images'));
-
-//???
-//const urlencodedParser = bodyParser.urlencoded({extended: false});
 
 const indexRouter = require("./routes/index");
 app.use('/', indexRouter);

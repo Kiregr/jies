@@ -61,7 +61,6 @@ function callEditParents(list){
 }
 
 //герерация возможных родителей
-
 exports.findParents = function(data, id) {
     let tree = listToTree(data);
     let parents = defineParent(tree, id);

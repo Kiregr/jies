@@ -20,26 +20,33 @@ html
 
 
         style(type='text/css').
-            div.tree {
-                width: 50%;
-                float: left;
+            div.table {
+                margin: 0 auto;
+                width: 100%;
+                display: table;
+            }
+            ul.columns {
+                display: table-row;
             }
 
-            div#employees {
+            li.column {
+                display: table-cell;
                 width: 50%;
-                height: 400px;
-                float: right;
             }
 
 
     body
-        div.tree
-            p
-                | Список Департаментов&nbsp;|&nbsp;
-                button.btnAdd(type='button', onclick='addDepartment()') Добавить
+        div.table
+            ul.columns
+                li.column
+                    div.tree
+                        p
+                            | Список Департаментов&nbsp;|&nbsp;
+                            button.btnAdd(type='button', onclick='addDepartment()') Добавить
+                            #tree
+                li.column
+                    div#employees
 
-            #tree
-        div#employees
         //div Active node:
         //    span.echoActive
         //p#sampleButtons Hello world
