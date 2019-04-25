@@ -10,15 +10,14 @@ exports.selectAll = function () {
 };
 //Добавление работяги
 exports.addEmployee = function(name, departmentId) {
-    Employee.create({
+    return Employee.create({
         fullname: name,
         departmentid: departmentId
     });
 };
 //Удаление работяги
 exports.deleteEmployee = function (id) {
-    console.log("delete");
-    Employee.destroy({
+    return Employee.destroy({
         where: {
             id: id
         }
@@ -26,7 +25,7 @@ exports.deleteEmployee = function (id) {
 };
 //Редактирование работяги
 exports.editEmployee = function (id, name, departmentId) {
-    Employee.update({
+    return Employee.update({
         departmentid: departmentId,
         fullname: name,
     }, {
