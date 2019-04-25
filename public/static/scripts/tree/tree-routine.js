@@ -3,11 +3,12 @@ function logEvent(event, data, msg) {
     msg = msg ? ": " + msg : "";
     $.ui.fancytree.info("Event('" + event.type + "', node=" + data.node + ")" + msg);
 }
-function testBootBox(department_id){
+
+function testBootBox(departmentId) {
     $.ajax({
-        url: `departments/parents/${department_id}`,
+        url: `departments/parents/${departmentId}`,
         type: 'GET',
-        success: function (parents) {
+        success: function () {
             $.ajax({
                 url: '/Departments/drop_down/form?',
                 type: 'GET',
@@ -18,10 +19,11 @@ function testBootBox(department_id){
         }
     })
 }
-function loadEmployees(department_id, department_name){
+
+function loadEmployees(departmentId, departmentName) {
     console.log("LOAD EMPLOYEES");
     $.ajax({
-        url: `tree/load_employees/${department_id}`,
+        url: `tree/load_employees/${departmentId}`,
         type: 'GET',
         dataType: 'json',
         success: function (employees) {
@@ -29,14 +31,15 @@ function loadEmployees(department_id, department_name){
             console.log(JSON.stringify(employees));
             let items = [];
             $.each(employees, function (index, value) {
-                items.push(`<li><b>Имя:</b> ${value.Fullname}; <b>Департамент:</b> ${department_name} | <button type="button" class="btnEdit" onclick="editEmployee(${value.Id},'${value.Fullname}', ${department_id}, '${department_name}')">Редактировать</button> | <button type="button" class="btnDelete" onclick="deleteEmployee(${value.Id}, ${department_id}, '${department_name}')">Удалить</button></li>`);
+                items.push(`<li><b>Имя:</b> ${value.Fullname}; <b>Департамент:</b> ${departmentName} | <button type="button" class="btnEdit" onclick="editEmployee(${value.Id},'${value.Fullname}', ${departmentId}, '${departmentName}')">Редактировать</button> | <button type="button" class="btnDelete" onclick="deleteEmployee(${value.Id}, ${departmentId}, '${departmentName}')">Удалить</button></li>`);
             });
             let employee_list = items.join('');
-            $("#employees").html(`<p>Работяги из ${department_name} | <button type="button" class="btnAdd" onclick="addEmployee(${department_id}, '${department_name}')">Добавить</button></p> <ul>${employee_list}</ul>`);
+            $("#employees").html(`<p>Работяги из ${departmentName} | <button type="button" class="btnAdd" onclick="addEmployee(${departmentId}, '${departmentName}')">Добавить</button></p> <ul>${employee_list}</ul>`);
         }
     });
 }
-function addDepartment(){
+
+function addDepartment() {
     console.log("Adding new department");
     $.ajax({
         url: '/Departments/Add',
@@ -63,14 +66,15 @@ function addDepartment(){
         }
     });
 }
-function editDepartment(department_id){
-    console.log(`Editing departement Id: ${department_id}`);
-    let id = department_id;
+
+function editDepartment(departmentId) {
+    console.log(`Editing departement Id: ${departmentId}`);
+    let id = departmentId;
     let name;
     let parentId;
     let inn;
     $.ajax({
-        url: `departments/${department_id}`,
+        url: `departments/${departmentId}`,
         type: 'GET',
         dataType: 'json',
         success: function (department) {
@@ -111,7 +115,7 @@ function editDepartment(department_id){
                                             console.log(this.data);
                                             let tree = $('#tree').fancytree('getTree');
                                             tree.reload();
-                                            //loadEmployees(department_id, department_name);
+                                            //loadEmployees(departmentId, departmentName);
                                         }
                                     })
                                 }
@@ -123,8 +127,9 @@ function editDepartment(department_id){
         }
     });
 }
-function deleteDepartment(department_id) {
-    console.log(`Deleting department`)
+
+function deleteDepartment(departmentId) {
+    console.log(`Deleting department`);
     bootbox.confirm({
         message: "Удалить?",
         size: 'small',
@@ -140,10 +145,10 @@ function deleteDepartment(department_id) {
             }
         },
         callback: function (result) {
-            if(result) {
+            if (result) {
                 console.log("DELETE department");
                 $.ajax({
-                    url: `departments/delete/test/${department_id}`,
+                    url: `departments/delete/test/${departmentId}`,
                     type: 'DELETE',
                     success: function () {
                         let tree = $('#tree').fancytree('getTree');
@@ -161,14 +166,15 @@ function deleteDepartment(department_id) {
         }
     });
 }
-function addEmployee(department_id, department_name){
-    console.log(`Adding employee to ${department_id} id; Title: "${department_name}"`);
+
+function addEmployee(departmentId, departmentName) {
+    console.log(`Adding employee to ${departmentId} id; Title: "${departmentName}"`);
     $.ajax({
-        url: `/Employees/Add/${department_id}`,
+        url: `/Employees/Add/${departmentId}`,
         type: 'GET',
-        success: function (add_form) {
-            console.log(add_form);
-            bootbox.confirm(add_form, function (result) {
+        success: function (addForm) {
+            console.log(addForm);
+            bootbox.confirm(addForm, function (result) {
                 if (result) {
                     console.log("addEmployees() -> loadEmployees()");
                     $.ajax({
@@ -177,13 +183,9 @@ function addEmployee(department_id, department_name){
                         data: {
                             name: document.getElementById('nameOfEmployee').value,
                             departmentId: document.getElementById('idOfDepartment').value
-                            /*
-                            let employee_name = request.body.name;
-                            let employee_depId = request.body.departmentId;
-                            */
                         },
                         success: function () {
-                            loadEmployees(department_id, department_name);
+                            loadEmployees(departmentId, departmentName);
                         }
                     })
                 }
@@ -192,17 +194,18 @@ function addEmployee(department_id, department_name){
     });
 
 }
-function editEmployee(employee_id, employee_name, department_id, department_name) {
-    console.log(`Editing employee ID: ${employee_id}`);
-    let id = employee_id;
-    let departmentId = department_id;
-    let name = employee_name;
+
+function editEmployee(employeeId, employeeName, employeeDepartmentId, departmentName) {
+    console.log(`Editing employee ID: ${employeeId}`);
+    let id = employeeId;
+    let departmentId = employeeDepartmentId;
+    let name = employeeName;
     $.ajax({
         url: `/Employees/Edit?id=${id}&departmentId=${departmentId}&name=${name}`,
         type: 'GET',
-        success: function (edit_form) {
+        success: function (editForm) {
             //console.log("TREE DATA: "+tree_data);
-            bootbox.confirm(edit_form, function (res) {
+            bootbox.confirm(editForm, function (res) {
                 if (res) {
                     console.log("editEmployee() -> loadEmployees()");
                     $.ajax({
@@ -214,7 +217,7 @@ function editEmployee(employee_id, employee_name, department_id, department_name
                             departmentId: document.getElementById('departmentId').value
                         },
                         success: function () {
-                            loadEmployees(department_id, department_name);
+                            loadEmployees(departmentId, departmentName);
                         }
                     })
                 }
@@ -222,8 +225,9 @@ function editEmployee(employee_id, employee_name, department_id, department_name
         }
     })
 }
-function deleteEmployee(employee_id, department_id, department_name) {
-    console.log(`Deleting employee Id: ${employee_id}` );
+
+function deleteEmployee(employeeId, departmentId, departmentName) {
+    console.log(`Deleting employee Id: ${employeeId}`);
     bootbox.confirm({
         message: "Удалить работягу?",
         buttons: {
@@ -239,17 +243,18 @@ function deleteEmployee(employee_id, department_id, department_name) {
         callback: function (result) {
             if (result) {
                 $.ajax({
-                    url: `employees/delete/test/${employee_id}`,
+                    url: `employees/delete/test/${employeeId}`,
                     type: 'DELETE',
                     success: function () {
                         console.log("deleteEmployee() -> loadEmployees()");
-                        loadEmployees(department_id, department_name);
+                        loadEmployees(departmentId, departmentName);
                     }
                 });
             }
         }
     });
 }
+
 $(function () {
     // Create the tree inside the <div id="tree"> element.
     $("#tree").fancytree({
@@ -268,10 +273,10 @@ $(function () {
             if (!$nodeSpan.data('rendered')) {
 
                 let editButton = $(`<button type="button" class="btnEdit" onclick="editDepartment(${data.node.key})">Редактировать ${data.node.key}</button>`);
-                let deleteButton = $(`<button type="button" class="btnDelete" onclick="deleteDepartment(${data.node.key})">Удалить ${data.node.key}</button>`)
+                let deleteButton = $(`<button type="button" class="btnDelete" onclick="deleteDepartment(${data.node.key})">Удалить ${data.node.key}</button>`);
 
-                $nodeSpan.append(editButton );
-                $nodeSpan.append(deleteButton );
+                $nodeSpan.append(editButton);
+                $nodeSpan.append(deleteButton);
 
                 editButton.hide();
                 deleteButton.hide();
@@ -284,7 +289,7 @@ $(function () {
                     // mouse out
                     editButton.hide();
                     deleteButton.hide();
-                })
+                });
                 // span rendered
                 $nodeSpan.data('rendered', true);
             }
@@ -297,8 +302,4 @@ $(function () {
             loadEmployees(data.node.key, data.node.title);
         },
     });
-})
-    .on('click', '.btnInit', function () {
-        console.log("Init tree");
-        $("#tree").fancytree();
-    });
+});
