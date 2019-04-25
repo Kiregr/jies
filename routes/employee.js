@@ -1,20 +1,25 @@
-let express = require('express');
-let router = express.Router();
+const express = require('express');
+const router = express.Router();
 
 //контроллер
-let employee_controller = require('../controllers/employeeController');
+const employeeController = require('../controllers/employeeController');
 
 // Вывод таблицы с работягами
-router.get('/', employee_controller.showTable);
+router.get('/', employeeController.showTable);
+
 //Добавление работяги
-router.get('/Add/:departmentId', employee_controller.addEmployeeGet);
-router.post('/Add', employee_controller.addEmployeePost);
+router.get('/Add/:departmentId', employeeController.addEmployeeGet);
+router.post('/Add', employeeController.addEmployeePost);
+
 //Удаление работяги
-router.get('/Delete', employee_controller.deleteEmployee);
-router.delete('/Delete/test/:id', employee_controller.deleteEmployee);
+router.get('/Delete', employeeController.deleteEmployee);
+router.delete('/Delete/test/:id', employeeController.deleteEmployee);
+
 //Редактирование работяги
-router.get('/Edit', employee_controller.editEmployeeGet);
-router.post('/Edit', employee_controller.editEmployeePost);
+router.get('/Edit', employeeController.editEmployeeGet);
+router.post('/Edit', employeeController.editEmployeePost);
+
 //вывод работяги по его id
-router.get('/:id', employee_controller.editEmployeeViaIdGet);
+router.get('/:id', employeeController.editEmployeeViaIdGet);
+
 module.exports = router;

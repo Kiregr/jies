@@ -1,31 +1,35 @@
-let express = require('express');
-let router = express.Router();
+const express = require('express');
+const router = express.Router();
 
 //контроллер
-let department_controller = require('../controllers/departmentController');
+const departmentController = require('../controllers/departmentController');
 
 // Вывод таблицы с департаментами
-router.get('/', department_controller.showTable);
+router.get('/', departmentController.showTable);
+
 //Добавление департамента
-router.get('/Add', department_controller.addDepartmentGet);
-router.post('/Add', department_controller.addDepartmentPost);
+router.get('/Add', departmentController.addDepartmentGet);
+router.post('/Add', departmentController.addDepartmentPost);
+
 //Удаление департамента
-router.get('/Delete/:id', department_controller.deleteDepartment);
-router.delete('/Delete/test/:id', department_controller.deleteDepartment);
+router.get('/Delete/:id', departmentController.deleteDepartment);
+router.delete('/Delete/test/:id', departmentController.deleteDepartment);
+
 //Редактирование департамента
-router.get('/Edit', department_controller.editDepartmentGet);
-router.post('/Edit', department_controller.editDepartmentPost);
+router.get('/Edit', departmentController.editDepartmentGet);
+router.post('/Edit', departmentController.editDepartmentPost);
 
 //вывод департамента по его id
-router.get('/:id', department_controller.editDepartmentViaIdGet);
+router.get('/:id', departmentController.editDepartmentViaIdGet);
 //поиск департаментов, но которые может ссылаться указанный департамент
-router.get('/Parents/:id', department_controller.getParents);
-//ТЕСТОВЫЙ ГЕТ ДЛЯ ВЫГРУЗКИ СПИСКА ---УДОЛИТЬ---
-router.get('/drop_down/form', department_controller.addDepartmentGetDropDown);
-router.post('/drop_down/form', department_controller.addDepartmentPostDropDown);
+router.get('/Parents/:id', departmentController.getParents);
 
-router.post('/pepega', function(request, response){
-   response.sendStatus(200);
+//ТЕСТОВЫЙ ГЕТ ДЛЯ ВЫГРУЗКИ СПИСКА ---УДАЛИТЬ---
+router.get('/drop_down/form', departmentController.addDepartmentGetDropDown);
+router.post('/drop_down/form', departmentController.addDepartmentPostDropDown);
+//что-то очень интересное
+router.post('/pepega', function (request, response) {
+    response.sendStatus(200);
 });
 
 module.exports = router;
