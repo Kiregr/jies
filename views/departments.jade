@@ -1,0 +1,28 @@
+doctype html
+html
+    head
+        title Departments
+    body
+        div
+            table
+                thead
+                    tr(align="left")
+                        th Id
+                        th ParentId
+                        th Name
+                        th Inn
+                        th Edit
+                        th Delete
+                        th
+                            a(href='/Departments/Add') Add
+                tbody
+                    each department in departments
+                        tr
+                            td=department.Id
+                            td=department.ParentId
+                            td=department.Name
+                            td=department.Inn
+                            td
+                                a(href=`/Departments/Edit?id=${department.Id}&parentId=${department.ParentId}&name=${department.Name}&inn=${department.Inn}`) Редактировать
+                            td
+                                a(href=`/Departments/Delete/${department.Id}`) Удалить

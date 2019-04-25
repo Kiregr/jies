@@ -1,0 +1,32 @@
+doctype html
+html
+    head
+        title Employees
+
+    body
+        div
+            table
+                thead
+                    tr(align="left")
+                        th Id
+                        th DepartmentId
+                        th FullName
+                        th Edit
+                        th Delete
+                        th
+                            a(href='/Employees/Add') Add
+                tbody
+                    each employee in employees
+                        tr
+                            td=employee.Id
+                            td=employee.DepartmentId
+                            td=employee.Fullname
+                            td
+                                a(href=`/Employees/Edit?id=${employee.Id}&departmentId=${employee.DepartmentId}&name=${employee.Fullname}`) Редактировать
+                            td
+                                a(href=`/Employees/Delete?id=${employee.Id}`) Удалить
+                                //form(method="post", action="/Employees/")
+                                //    div.input
+                                //        input(type="hidden", name="id", value=`${employee.Id}`)
+                                //    div.actions
+                                //        input(type="submit", value="Удалить")

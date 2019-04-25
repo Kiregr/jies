@@ -1,0 +1,11 @@
+form(method="post", action="/Employees/Edit", id="edit_employee_form")
+    input(type="hidden", name="id", value="#{id}")
+    p Введите имя:
+    input(type="text", name="name", value="#{name}")
+    p Выберите департамент:
+    input(type="text", name="departmentId", value="#{departmentId}")
+    br
+    br
+    input(type="submit", value="Отправить")
+    br
+

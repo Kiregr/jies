@@ -1,0 +1,7 @@
+form(method="post", action="/Employees/Add", id="add_employee_form")
+    input(type="hidden", name="departmentId", value="#{departmentId}")
+    p Введите имя:
+    input(type="text", name="name")
+    br
+    br
+    input(type="submit", value="Отправить")

@@ -1,0 +1,29 @@
+
+//form(method="post", action="/Departments/Edit", id="edit_department_form")
+//   input(type="hidden", name="id", value="#{id}")
+//   p Введите имя:
+//   input(type="text", name="name", value="#{name}")
+//   p Выберите родительский департамент:
+//   input(type="text", name="parentId", value="#{parentId}")
+//   p Введите Inn:
+//   input(type="text", name="inn", value="#{inn}")
+//   br
+//   br
+//   input(type="submit", value="Отправить")
+form(method="post", action="/Departments/Edit", id="add_department_form")
+    input(type="hidden", name="id", value="#{id}")
+    p Введите имя:
+    input(type="text", name="name", value="#{name}")
+    p Выберите главный департамент:
+    select(name='parentId')
+        option(value="") will be parent
+        each parent in parents
+            if parent.Id == parentId
+                option(selected="", value=parent.Id) #{parent.Name}
+            else if parent.Id != id
+                option(value=parent.Id) #{parent.Name}
+    p Введите Inn:
+    input(type="text", name="inn", value="#{inn}")
+    br
+    br
+    input(type="submit", value="Отправить")
