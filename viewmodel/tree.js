@@ -18,25 +18,27 @@ function listToTree(list) {
     });
     return roots;
 }
+
 //представление дерева в нужном формате (для fancytree)
-function createFancyTreeData(list){
+function createFancyTreeData(list) {
     list.map(element => {
         element.title = `${element.Name} Inn ${element.Inn}`;
         element.key = element.Id;
+
         delete element.ParentId;
         delete element.Name;
         delete element.Inn;
         delete element.Id;
-        if(element.children !== []) {
+
+        if (element.children !== []) {
             element.folder = true;
             createFancyTreeData(element.children);
-            //console.log("Elements: ");
-            //console.log(element.children);
-        }/*console.log(element.children)*/
+        }
     });
     return list;
 }
+
 //вызов необходимых для генерации source-данных для fancytree
-exports.genTreeData = function(data) {
+exports.genTreeData = function (data) {
     return createFancyTreeData((listToTree(data)));
 };

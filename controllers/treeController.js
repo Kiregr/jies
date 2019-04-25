@@ -1,34 +1,33 @@
-const tree_viewmodel = require('../viewmodel/tree');
-const department_viewmodel = require('../viewmodel/department');
-const employee_viewmodel = require('../viewmodel/employee');
+const treeViewmodel = require('../viewmodel/tree');
+const departmentViewmodel = require('../viewmodel/department');
+const employeeViewmodel = require('../viewmodel/employee');
 
 //вывод депертаментов в виде списка
-exports.getData = function (request, response){
-    department_viewmodel.selectAll().
-    then((data)=>{
-        let treeData = tree_viewmodel.genTreeData(data);
-        console.log(treeData);
-        response.render('tree',{tree_data: treeData});
-    })
+exports.getData = function (request, response) {
+    departmentViewmodel.selectAll()
+        .then((data) => {
+            let treeData = treeViewmodel.genTreeData(data);
+
+            //console.log(`TREEDATA: \n ${treeData}`);
+            response.render('tree', {tree_data: treeData});
+        })
 };
 //получение данных департаментов после обновления
-exports.reloadData = function (request, response){
-    department_viewmodel.selectAll().
-    then((data)=>{
-        let treeData = tree_viewmodel.genTreeData(data);
-        //console.log(treeData);
-        //response.render('tree',{tree_data: treeData});
-        response.send(treeData);
-    })
-};
+exports.reloadData = function (request, response) {
+    departmentViewmodel.selectAll()
+        .then((data) => {
+            let treeData = treeViewmodel.genTreeData(data);
 
+            response.send(treeData);
+        })
+};
 //загрузка работяги из департамента
-exports.loadEmployee = function (request, response){
-    let department_id = request.params.id;
-    console.log(department_id);
-    employee_viewmodel.findEmployeesFromDepartment(department_id).
-    then((data)=>{
-        console.log(data);
-        response.send(data);
-    });
+exports.loadEmployee = function (request, response) {
+    let departmentId = request.params.id;
+
+    employeeViewmodel.findEmployeesFromDepartment(departmentId)
+        .then((employees) => {
+            //console.log(`EMPLOYEES FROM DEPARTMENT: \n ${employees}`);
+            response.send(employees);
+        });
 };

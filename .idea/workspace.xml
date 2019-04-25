@@ -3,9 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="ffb910b6-8261-4658-a63f-304ff64f8b27" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/employeeController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/employeeController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/viewmodel/department.js" beforeDir="false" afterPath="$PROJECT_DIR$/viewmodel/department.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/viewmodel/employee.js" beforeDir="false" afterPath="$PROJECT_DIR$/viewmodel/employee.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/treeController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/treeController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/viewmodel/tree.js" beforeDir="false" afterPath="$PROJECT_DIR$/viewmodel/tree.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -21,13 +20,13 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controllers/departmentController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="103">
+            <state relative-caret-position="1615">
               <caret line="95" column="57" selection-start-line="95" selection-start-column="57" selection-end-line="95" selection-end-column="57" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controllers/employeeController.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="153">
@@ -48,8 +47,26 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/viewmodel/department.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="884">
-              <caret line="52" column="2" selection-start-line="52" selection-start-column="2" selection-end-line="52" selection-end-column="2" />
+            <state relative-caret-position="154">
+              <caret line="35" column="19" selection-start-line="35" selection-start-column="19" selection-end-line="35" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/controllers/treeController.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="27" column="63" selection-start-line="27" selection-start-column="63" selection-end-line="27" selection-end-column="63" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/viewmodel/tree.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="578">
+              <caret line="34" column="50" selection-start-line="34" selection-start-column="50" selection-end-line="34" selection-end-column="50" />
             </state>
           </provider>
         </entry>
@@ -109,19 +126,21 @@
       <find>type: &quot;POST&quot;</find>
       <find>department_inn</find>
       <find>department_viewmodel</find>
-      <find>department_id</find>
       <find>employee_name</find>
       <find>employee_depId</find>
       <find>employee_id</find>
+      <find>employee_viewmodel</find>
+      <find>department_id</find>
     </findStrings>
     <replaceStrings>
       <replace />
       <replace>departmentInn</replace>
       <replace>departmentViewmodel</replace>
-      <replace>departmentId</replace>
       <replace>employeeName</replace>
       <replace>employeeDepId</replace>
       <replace>employeeId</replace>
+      <replace>employeeViewmodel</replace>
+      <replace>departmentId</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -150,7 +169,6 @@
         <option value="$PROJECT_DIR$/json.js" />
         <option value="$USER_HOME$/Downloads/Telegram Desktop/main.js" />
         <option value="$PROJECT_DIR$/hueta.js" />
-        <option value="$PROJECT_DIR$/viewmodel/tree.js" />
         <option value="$PROJECT_DIR$/views/employees.jade" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$USER_HOME$/Downloads/site/boots/site.html" />
@@ -158,7 +176,6 @@
         <option value="$PROJECT_DIR$/views/bootbox.html" />
         <option value="$USER_HOME$/Downloads/site/blessrng/site.html" />
         <option value="$PROJECT_DIR$/views/departments.jade" />
-        <option value="$PROJECT_DIR$/controllers/treeController.js" />
         <option value="$PROJECT_DIR$/routes/tree.js" />
         <option value="$PROJECT_DIR$/views/bootbox.jade" />
         <option value="$PROJECT_DIR$/routes/employee.js" />
@@ -177,6 +194,8 @@
         <option value="$PROJECT_DIR$/viewmodel/employee.js" />
         <option value="$PROJECT_DIR$/controllers/employeeController.js" />
         <option value="$PROJECT_DIR$/viewmodel/department.js" />
+        <option value="$PROJECT_DIR$/controllers/treeController.js" />
+        <option value="$PROJECT_DIR$/viewmodel/tree.js" />
       </list>
     </option>
   </component>
@@ -363,7 +382,7 @@
       <workItem from="1556191119085" duration="367000" />
       <workItem from="1556192230689" duration="9042000" />
       <workItem from="1556204702638" duration="6257000" />
-      <workItem from="1556215880610" duration="9738000" />
+      <workItem from="1556215880610" duration="9969000" />
     </task>
     <task id="LOCAL-00001" summary="added dropdownlists for add_dep">
       <created>1556193204361</created>
@@ -435,11 +454,18 @@
       <option name="project" value="LOCAL" />
       <updated>1556225561576</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="refactored(peepoClown) employeeController">
+      <created>1556226116124</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1556226116125</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="309272000" />
+    <option name="totallyTimeSpent" value="309503000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -460,7 +486,7 @@
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.21767594" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49925596" visible="true" weight="0.18657938" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49925596" weight="0.18657938" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.24386252" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -470,7 +496,7 @@
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50074404" side_tool="true" weight="0.17839608" />
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.24713585" />
       <window_info anchor="bottom" id="TypeScript" order="11" />
-      <window_info anchor="bottom" id="Messages" order="12" weight="0.16530278" />
+      <window_info anchor="bottom" id="Messages" order="12" visible="true" weight="0.16530278" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -541,7 +567,8 @@
     <MESSAGE value="added error-catching on Departments/Delete" />
     <MESSAGE value="blessRNG" />
     <MESSAGE value="refactored(peepoClown) departmentController" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactored(peepoClown) departmentController" />
+    <MESSAGE value="refactored(peepoClown) employeeController" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactored(peepoClown) employeeController" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/public/static/scripts/fancytree/jquery-1.12.0.min.js">
@@ -753,24 +780,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/treeController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/test.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="10" selection-start-line="10" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/viewmodel/tree.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="302">
-          <caret line="37" column="1" selection-start-line="37" selection-start-column="1" selection-end-line="37" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -827,13 +840,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/departmentController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="103">
-          <caret line="95" column="57" selection-start-line="95" selection-start-column="57" selection-end-line="95" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/routes/department.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -855,17 +861,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/viewmodel/department.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="884">
-          <caret line="52" column="2" selection-start-line="52" selection-start-column="2" selection-end-line="52" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/controllers/employeeController.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" column="2" lean-forward="true" selection-start-line="9" selection-start-column="2" selection-end-line="9" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/viewmodel/department.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="35" column="19" selection-start-line="35" selection-start-column="19" selection-end-line="35" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/departmentController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1615">
+          <caret line="95" column="57" selection-start-line="95" selection-start-column="57" selection-end-line="95" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/treeController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="27" column="63" selection-start-line="27" selection-start-column="63" selection-end-line="27" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/viewmodel/tree.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="34" column="50" selection-start-line="34" selection-start-column="50" selection-end-line="34" selection-end-column="50" />
         </state>
       </provider>
     </entry>
