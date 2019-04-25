@@ -1,4 +1,5 @@
 const employee_viewmodel = require('../viewmodel/employee');
+const department_viewmodel = require('../viewmodel/department');
 
 //Вывод таблицы с работягами
 exports.showTable = function (request, response){
@@ -37,7 +38,13 @@ exports.editEmployeeGet = function(request, response){
     let employee_id = request.query.id;
     let employee_name = request.query.name;
     let employee_depId = request.query.departmentId;
-    response.render("edit_employees", {id: employee_id, name: employee_name, departmentId: employee_depId});
+    let departments;
+    //использоваение department_viewmodel в EMPLOYEES????
+    department_viewmodel.selectAll().
+    then((data)=>{
+        departments = data;
+        response.render("edit_employees", {departments: departments, id: employee_id, name: employee_name, departmentId: employee_depId});
+    });
 };
 
 exports.editEmployeePost = function(request, response){

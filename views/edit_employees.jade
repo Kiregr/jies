@@ -2,10 +2,12 @@ form(method="post", action="/Employees/Edit", id="edit_employee_form")
     input(type="hidden", name="id", value="#{id}")
     p Введите имя:
     input(type="text", name="name", value="#{name}")
-    p Выберите департамент:
-    input(type="text", name="departmentId", value="#{departmentId}")
-    br
+    p Выберите главный департамент:
+        select(name='departmentId')
+            each department in departments
+                if department.Id == departmentId
+                    option(selected="", value=department.Id) #{department.Name}
+                else
+                    option(value=department.Id) #{department.Name}
     br
     input(type="submit", value="Отправить")
-    br
-
