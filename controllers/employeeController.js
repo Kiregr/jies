@@ -21,7 +21,7 @@ exports.addEmployeePost = function(request, response){
     let employee_depId = request.body.departmentId;
     employee_viewmodel.addEmployee(employee_name, employee_depId);
     //response.redirect("/Employees");
-    //response.sendStatus(200);
+    response.sendStatus(200);
 };
 
 //Удаление работяги

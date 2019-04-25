@@ -133,20 +133,7 @@ html
                                             }
                                         },
                                     }
-
                                 })
-                                /*
-                                bootbox.confirm(data, function (result) {
-                                    if (result) {
-                                        $('#edit_department_form').submit();
-                                        let tree = $('#tree').fancytree('getTree');
-                                        tree.reload();
-                                    }
-                                });
-                                */
-                                /*
-
-                                */
                             }
                         });
                     }
@@ -191,8 +178,21 @@ html
                         bootbox.confirm(add_form, function (result) {
                             if (result) {
                                 console.log("addEmployees() -> loadEmployees()");
-                                //$('#add_employee_form').submit();
-                                loadEmployees(department_id, department_name);
+                                $.ajax({
+                                    url: `Employees/Add`,
+                                    type: "POST",
+                                    data: {
+                                        name: document.getElementById('nameOfEmployee').value,
+                                        departmentId: document.getElementById('idOfDepartment').value
+                                        /*
+                                        let employee_name = request.body.name;
+                                        let employee_depId = request.body.departmentId;
+                                        */
+                                    },
+                                    success: function () {
+                                        loadEmployees(department_id, department_name);
+                                    }
+                                })
                             }
                         });
                     }
