@@ -16,8 +16,9 @@ form(method="post", action="/Departments/Edit", id="add_department_form")
     input(type="text", name="name", value="#{name}")
     p Выберите главный департамент:
     select(name='parentId')
-        option(value="") will be parent
         each parent in parents
+            if(parent.Name == name)
+                option(selected="", value="")  Нет родителя
             if parent.Id == parentId
                 option(selected="", value=parent.Id) #{parent.Name}
             else if parent.Id != id
@@ -26,4 +27,5 @@ form(method="post", action="/Departments/Edit", id="add_department_form")
     input(type="text", name="inn", value="#{inn}")
     br
     br
+    h2 #{parents[0].Name}
     input(type="submit", value="Отправить")

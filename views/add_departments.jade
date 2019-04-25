@@ -3,7 +3,7 @@ form(method="post", action="/Departments/Add", id="add_department_form")
     input(type="text", name="name")
     p Выберите главный департамент:
         select(name='parentid')
-            option(value="") will be parent
+            option(value="") Нет родителя
             each department in departments
                 option(value=department.Id) #{department.Name}
     p Введите Inn:
