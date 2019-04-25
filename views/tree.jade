@@ -64,9 +64,19 @@ html
                         console.log(data);
                         bootbox.confirm(data, function (result) {
                             if (result) {
-                                $('#add_department_form').submit();
-                                let tree = $('#tree').fancytree('getTree');
-                                tree.reload();
+                                $.ajax({
+                                    url: `Departments/Add`,
+                                    type: "POST",
+                                    data: {
+                                        parentId: document.getElementById('parentIdOfDepartment').value,
+                                        name: document.getElementById('nameOfDepartment').value,
+                                        inn: document.getElementById('innOfDepartment').value
+                                    },
+                                    success: function () {
+                                        let tree = $('#tree').fancytree('getTree');
+                                        tree.reload();
+                                    }
+                                })
                             }
                         });
                     }
@@ -96,14 +106,14 @@ html
                                     size: 'large',
                                     buttons: {
                                         cancel: {
-                                            label: "I'm a cancel button!",
+                                            label: "Отмена!",
                                             className: 'btn-danger',
                                             callback: function () {
                                                 console.log('Custom cancel clicked');
                                             }
                                         },
                                         ok: {
-                                            label: "I'm an OK button!",
+                                            label: "Редактировать",
                                             className: 'btn-info',
                                             callback: function () {
                                                 $.ajax({
@@ -111,7 +121,7 @@ html
                                                     type: "POST",
                                                     data: {
                                                         id: document.getElementById('idOfDepartment').value,
-                                                        parentId: document.getElementById('patentIdOfDepartment').value,
+                                                        parentId: document.getElementById('parentIdOfDepartment').value,
                                                         name: document.getElementById('nameOfDepartment').value,
                                                         inn: document.getElementById('innOfDepartment').value
                                                     },

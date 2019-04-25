@@ -24,9 +24,11 @@ exports.addDepartmentGet = function (request, response) {
 exports.addDepartmentPost = function(request, response){
     if(!request.body) return response.sendStatus(400);
     let department_name = request.body.name;
-    let department_parentId = request.body.parentid;
+    let department_parentId = request.body.parentId;
     let department_inn = request.body.inn;
-    department_viewmodel.addDepartment(department_name, department_parentId, department_inn).then((data) => { /*response.end();*/});
+    department_viewmodel.addDepartment(department_name, department_parentId, department_inn).then((data) => {
+        response.sendStatus(200);
+    });
     //response.redirect("/Departments");
     //response.sendStatus(200);
 
