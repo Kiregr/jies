@@ -73,9 +73,10 @@ exports.addDepartmentPostDropDown = function(request, response){
 exports.deleteDepartment = function(request, response){
     let department_id = request.params.id;
     //let department_id = request.params.id;
-    department_viewmodel.deleteDepartment(department_id);
+    department_viewmodel.deleteDepartment(department_id).
+    then((status)=> response.sendStatus(status));
     //response.redirect("/tree");
-    response.sendStatus(204);
+
 };
 
 //Редактирование департамент

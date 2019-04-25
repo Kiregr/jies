@@ -18,10 +18,16 @@ exports.addDepartment = function(name, parentId, inn) {
 };
 //Удаление департамента
 exports.deleteDepartment = function (id) {
-    Department.destroy({
+    return Department.destroy({
         where: {
             id: id
         }
+    }).then(()=>{
+        console.log("DONE SUCCESS");
+        return 204;
+    }).catch(function(error){
+        console.log("ERROR:");
+        return 403;
     });
 };
 //Редактирование работяги

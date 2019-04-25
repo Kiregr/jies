@@ -101,7 +101,7 @@ html
                             type: 'GET',
                             success: function (data) {
                                 bootbox.dialog({
-                                    title: 'A custom dialog with buttons and callbacks',
+                                    title: 'Редактирование департаменов',
                                     message: data,
                                     size: 'large',
                                     buttons: {
@@ -143,6 +143,8 @@ html
                 console.log(`Deleting department`)
                 bootbox.confirm({
                     message: "Удалить?",
+                    size: 'small',
+                    title: "Подтвердите удаление",
                     buttons: {
                         confirm: {
                             label: 'Да',
@@ -162,6 +164,13 @@ html
                                 success: function () {
                                     let tree = $('#tree').fancytree('getTree');
                                     tree.reload();
+                                },
+                                error: function () {
+                                    bootbox.alert({
+                                        title: "Ошибка",
+                                        message: "Удаление департамента запрещено законом",
+                                        size: 'small'
+                                    });
                                 }
                             });
                         }
@@ -265,7 +274,6 @@ html
                         url: "/tree/reload_tree",
                         cache: false
                     },
-                    //!{JSON.stringify(tree_data)},
                     clickFolderMode: 4, // 1:activate, 2:expand, 3:activate and expand, 4:activate (dblclick expands)
                     keyboard: true,
                     renderNode: function (event, data) {
