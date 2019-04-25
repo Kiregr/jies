@@ -21,7 +21,7 @@ router.get('/:id', department_controller.editDepartmentViaIdGet);
 //поиск департаментов, но которые может ссылаться указанный департамент
 router.get('/Parents/:id', department_controller.getParents);
 //ТЕСТОВЫЙ ГЕТ ДЛЯ ВЫГРУЗКИ СПИСКА ---УДОЛИТЬ---
-router.get('/drop_down/form/:id', department_controller.addDepartmentGetDropDown);
+router.get('/drop_down/form', department_controller.addDepartmentGetDropDown);
 router.post('/drop_down/form', department_controller.addDepartmentPostDropDown);
 
 module.exports = router;

@@ -13,7 +13,13 @@ exports.showTable = function (request, response) {
 
 //Добавление департамента
 exports.addDepartmentGet = function (request, response) {
-    response.render("add_departments");
+    let departments;
+    department_viewmodel.selectAll().
+    then((data)=>{
+        departments = data;
+        response.render("add_departments", {departments: departments});
+    });
+
 };  
 exports.addDepartmentPost = function(request, response){
     if(!request.body) return response.sendStatus(400);
@@ -41,13 +47,11 @@ exports.getParents = function (request, response) {
     });
 };
 exports.addDepartmentGetDropDown = function (request, response) {
-    let department_id = request.params.id;
-    let parent_id = 3;
-    let parents;
+    let departments;
     department_viewmodel.selectAll().
     then((data)=>{
-        parents = getParents.findParents(data, department_id);
-        response.render("drop_down", {parents: parents, id: department_id, parentId: 6});
+        departments = data;
+        response.render("drop_down", {departments: departments});
     });
     //response.render("drop_down", {parents: [{Id:2, Name: "HAHA"},{Id:1, Name:"ODIN"}], Id: department_id});
 };
