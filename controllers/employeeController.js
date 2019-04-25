@@ -54,7 +54,7 @@ exports.editEmployeePost = function(request, response){
     let employee_depId = request.body.departmentId;
     employee_viewmodel.editEmployee(employee_id, employee_name, employee_depId);
     //response.redirect("/Employees");
-    //response.sendStatus(200);
+    response.sendStatus(200);
     //response.end();
 };
 

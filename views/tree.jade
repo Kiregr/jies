@@ -212,9 +212,18 @@ html
                         bootbox.confirm(edit_form, function (res) {
                             if (res) {
                                 console.log("editEmployee() -> loadEmployees()");
-                                $('#edit_employee_form').submit();
-                                loadEmployees(department_id, department_name);
-
+                                $.ajax({
+                                    url: `Employees/Edit`,
+                                    type: "POST",
+                                    data: {
+                                        id: document.getElementById('idOfEmployee').value,
+                                        name: document.getElementById('nameOfEmployee').value,
+                                        departmentId: document.getElementById('departmentId').value
+                                    },
+                                    success: function () {
+                                        loadEmployees(department_id, department_name);
+                                    }
+                                })
                             }
                         });
                     }
