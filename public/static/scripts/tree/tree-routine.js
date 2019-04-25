@@ -46,6 +46,39 @@ function addDepartment() {
         type: 'GET',
         success: function (data) {
             console.log(data);
+            bootbox.dialog({
+                title: 'Добавление департаменов',
+                message: data,
+                buttons: {
+                    cancel: {
+                        label: "Отмена!",
+                        className: 'btn-danger',
+                        callback: function () {
+                            console.log('Custom cancel clicked');
+                        }
+                    },
+                    ok: {
+                        label: "Добавить",
+                        className: 'btn-info',
+                        callback: function () {
+                            $.ajax({
+                                url: `Departments/Add`,
+                                type: "POST",
+                                data: {
+                                    parentId: document.getElementById('parentIdOfDepartment').value,
+                                    name: document.getElementById('nameOfDepartment').value,
+                                    inn: document.getElementById('innOfDepartment').value
+                                },
+                                success: function () {
+                                    let tree = $('#tree').fancytree('getTree');
+                                    tree.reload();
+                                }
+                            })
+                        }
+                    },
+                }
+            })
+            /*
             bootbox.confirm(data, function (result) {
                 if (result) {
                     $.ajax({
@@ -63,6 +96,7 @@ function addDepartment() {
                     })
                 }
             });
+             */
         }
     });
 }
@@ -84,11 +118,10 @@ function editDepartment(departmentId) {
             $.ajax({
                 url: `/Departments/Edit?id=${id}&parentId=${parentId}&name=${name}&inn=${inn}`,
                 type: 'GET',
-                success: function (data) {
+                success: function (editForm) {
                     bootbox.dialog({
                         title: 'Редактирование департаменов',
-                        message: data,
-                        size: 'large',
+                        message: editForm,
                         buttons: {
                             cancel: {
                                 label: "Отмена!",
@@ -111,8 +144,6 @@ function editDepartment(departmentId) {
                                             inn: document.getElementById('innOfDepartment').value
                                         },
                                         success: function () {
-                                            console.log("DATA ALO");
-                                            console.log(this.data);
                                             let tree = $('#tree').fancytree('getTree');
                                             tree.reload();
                                             //loadEmployees(departmentId, departmentName);
@@ -174,6 +205,38 @@ function addEmployee(departmentId, departmentName) {
         type: 'GET',
         success: function (addForm) {
             console.log(addForm);
+
+            bootbox.dialog({
+                title: 'Добавление работника',
+                message: addForm,
+                buttons: {
+                    cancel: {
+                        label: "Отмена!",
+                        className: 'btn-danger',
+                        callback: function () {
+                            console.log('Custom cancel clicked');
+                        }
+                    },
+                    ok: {
+                        label: "Добавить",
+                        className: 'btn-info',
+                        callback: function () {
+                            $.ajax({
+                                url: `Employees/Add`,
+                                type: "POST",
+                                data: {
+                                    name: document.getElementById('nameOfEmployee').value,
+                                    departmentId: document.getElementById('idOfDepartment').value
+                                },
+                                success: function () {
+                                    loadEmployees(departmentId, departmentName);
+                                }
+                            })
+                        }
+                    },
+                }
+            })
+            /*
             bootbox.confirm(addForm, function (result) {
                 if (result) {
                     console.log("addEmployees() -> loadEmployees()");
@@ -190,6 +253,7 @@ function addEmployee(departmentId, departmentName) {
                     })
                 }
             });
+             */
         }
     });
 
@@ -204,7 +268,38 @@ function editEmployee(employeeId, employeeName, employeeDepartmentId, department
         url: `/Employees/Edit?id=${id}&departmentId=${departmentId}&name=${name}`,
         type: 'GET',
         success: function (editForm) {
-            //console.log("TREE DATA: "+tree_data);
+            bootbox.dialog({
+                title: 'Редактирование работника',
+                message: editForm,
+                buttons: {
+                    cancel: {
+                        label: "Отмена!",
+                        className: 'btn-danger',
+                        callback: function () {
+                            console.log('Custom cancel clicked');
+                        }
+                    },
+                    ok: {
+                        label: "Редактировать",
+                        className: 'btn-info',
+                        callback: function () {
+                            $.ajax({
+                                url: `Employees/Edit`,
+                                type: "POST",
+                                data: {
+                                    id: document.getElementById('idOfEmployee').value,
+                                    name: document.getElementById('nameOfEmployee').value,
+                                    departmentId: document.getElementById('departmentId').value
+                                },
+                                success: function () {
+                                    loadEmployees(departmentId, departmentName);
+                                }
+                            })
+                        }
+                    },
+                }
+            })
+            /*
             bootbox.confirm(editForm, function (res) {
                 if (res) {
                     console.log("editEmployee() -> loadEmployees()");
@@ -222,6 +317,7 @@ function editEmployee(employeeId, employeeName, employeeDepartmentId, department
                     })
                 }
             });
+             */
         }
     })
 }

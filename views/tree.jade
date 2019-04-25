@@ -1,19 +1,18 @@
 doctype html
 html
     head
-        title Tree
+        title Дерево
         //скрипты для дерева
         script(src="/static/scripts/fancytree/jquery-1.12.0.min.js")
         script(src="/static/scripts/fancytree/jquery-ui.min.js")
         script(src="/static/scripts/fancytree/jquery.fancytree-all.min.js")
+
         //стили для дерева
-        //link(href="/static/stylesheets/bootstrap_min.css", rel="stylesheet")
         link(href="/static/stylesheets/ui.fancytree.css" rel="stylesheet")
 
-
-        link(rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css")
-        //script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js")
-        script(src="http://netdna.bootstrapcdn.com/twitter-bootstrap/4.1.3/js/bootstrap.min.js")
+        //для bootbox
+        link(rel="stylesheet" type="text/css" href="/static/stylesheets/bootstrap.min.css")
+        script(src="/static/scripts/bootstrap.min.js")
         script(src="/static/scripts/bootbox/bootbox.min.js")
 
         script(src="/static/scripts/tree/tree-routine.js").
@@ -46,11 +45,3 @@ html
                             #tree
                 li.column
                     div#employees
-
-        //div Active node:
-        //    span.echoActive
-        //p#sampleButtons Hello world
-        //button.btnInit(type="button") Init
-        button.btnTest(type='button', onclick='testBootBox(1)') Бутбоксики
-
-

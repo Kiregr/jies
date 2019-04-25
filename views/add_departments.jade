@@ -2,9 +2,9 @@ form(method="post", action="/Departments/Add", id="add_department_form")
     p Введите имя:
     input(type="text", name="name", id="nameOfDepartment")
     p Выберите главный департамент:
-        select(name='parentId', id="parentIdOfDepartment")
-            option(value="") Нет родителя
-            each department in departments
-                option(value=department.Id) #{department.Name}
+    select(name='parentId', id="parentIdOfDepartment")
+        option(value="") Нет родителя
+        each department in departments
+            option(value=department.Id) #{department.Name}
     p Введите Inn:
     input(type="text", name="inn", id="innOfDepartment")
