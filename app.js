@@ -8,7 +8,7 @@ const bodyParser = require("body-parser");
 
 const employeeRouter = require("./routes/employee");
 const departmentRouter = require('./routes/department');
-const treeRoutes = require('./routes/tree');
+
 
 sequelize
     .authenticate()
@@ -38,8 +38,5 @@ app.use('/Employees', employeeRouter);
 //const departmentRouter = require('./routes/department');
 app.use('/Departments', departmentRouter);
 
-//Tree
-//const treeRoutes = require('./routes/tree');
-app.use('/Tree', treeRoutes);
 
 app.listen(3000);

@@ -23,7 +23,7 @@ function testBootBox(departmentId) {
 function loadEmployees(departmentId, departmentName) {
     console.log("LOAD EMPLOYEES");
     $.ajax({
-        url: `tree/load_employees/${departmentId}`,
+        url: `employees/load_employees/${departmentId}`,
         type: 'GET',
         dataType: 'json',
         success: function (employees) {
@@ -364,7 +364,7 @@ $(function () {
     $("#tree").fancytree({
         extensions: ["edit", "filter"],
         source: {
-            url: "/tree/reload_tree",
+            url: "/Departments/reload_tree",
             cache: false
         },
         clickFolderMode: 4, // 1:activate, 2:expand, 3:activate and expand, 4:activate (dblclick expands)

@@ -1,6 +1,26 @@
 const departmentViewmodel = require('../viewmodel/department');
 const getParents = require('../common/get-parents');
 
+exports.getData = function (request, response) {
+    departmentViewmodel.selectAll()
+        .then((data) => {
+            let treeData = departmentViewmodel.genTreeData(data);
+
+            //console.log(`TREEDATA: \n ${treeData}`);
+            response.render('tree', {tree_data: treeData});
+        })
+};
+//получение данных департаментов после обновления
+exports.reloadData = function (request, response) {
+    departmentViewmodel.selectAll()
+        .then((data) => {
+            let treeData = departmentViewmodel.genTreeData(data);
+
+            response.send(treeData);
+        })
+};
+//
+
 //Вывод таблицы с департаментами
 exports.showTable = function (request, response) {
     departmentViewmodel.selectAll()

@@ -4,6 +4,11 @@ const router = express.Router();
 //контроллер
 const employeeController = require('../controllers/employeeController');
 
+//
+//
+//
+router.get('/load_employees/:id', employeeController.loadEmployee);
+
 // Вывод таблицы с работягами
 router.get('/', employeeController.showTable);
 

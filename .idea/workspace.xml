@@ -3,11 +3,15 @@
   <component name="ChangeListManager">
     <list default="true" id="ffb910b6-8261-4658-a63f-304ff64f8b27" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/departmentController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/departmentController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/treeController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/treeController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/employeeController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/employeeController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/treeController.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/static/scripts/tree/tree-routine.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/static/scripts/tree/tree-routine.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/department.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/department.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/employee.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/employee.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/tree.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/viewmodel/department.js" beforeDir="false" afterPath="$PROJECT_DIR$/viewmodel/department.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/edit_departments.jade" beforeDir="false" afterPath="$PROJECT_DIR$/views/edit_departments.jade" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -23,53 +27,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controllers/departmentController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-297">
-              <caret line="11" column="2" selection-start-line="11" selection-start-column="2" selection-end-line="11" selection-end-column="2" />
-              <folding>
-                <element signature="e#200#371#0" />
-                <element signature="e#307#356#0" />
-                <element signature="e#722#1082#0" />
-                <element signature="e#1029#1078#0" />
-                <element signature="e#1085#1111#0" />
-                <element signature="e#1214#1405#0" />
-                <element signature="e#1319#1401#0" />
-                <element signature="e#1471#1672#0" />
-                <element signature="e#1555#1668#0" />
-                <element signature="e#1739#2099#0" />
-                <element signature="e#2486#3120#0" />
-                <element signature="e#2748#3078#0" />
-                <element signature="e#2864#3066#0" />
-                <element signature="e#3180#3564#0" />
-                <element signature="e#3669#3821#0" />
-                <element signature="e#3781#3817#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/routes/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="24" lean-forward="true" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/models/employee.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="13" column="8" selection-start-line="13" selection-start-column="8" selection-end-line="13" selection-end-column="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/viewmodel/tree.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="332">
-              <caret line="43" column="2" lean-forward="true" selection-end-line="43" selection-end-column="2" />
+            <state relative-caret-position="34">
+              <caret line="2" selection-start-line="2" selection-end-line="2" />
             </state>
           </provider>
         </entry>
@@ -77,12 +36,13 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/viewmodel/department.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1003">
+            <state relative-caret-position="374">
               <caret line="101" column="2" selection-start-line="101" selection-start-column="2" selection-end-line="101" selection-end-column="2" />
               <folding>
                 <element signature="e#101#218#0" />
                 <element signature="e#172#210#0" />
                 <element signature="e#301#476#0" />
+                <element signature="e#332#430#0" />
                 <element signature="e#445#472#0" />
                 <element signature="e#543#801#0" />
                 <element signature="e#575#628#0" />
@@ -95,16 +55,44 @@
                 <element signature="e#1037#1067#0" />
                 <element signature="e#1156#1288#0" />
                 <element signature="e#1242#1280#0" />
+                <element signature="e#1292#1294#0" />
+                <element signature="n#!!block;n#listToTree#0" />
+                <element signature="e#1407#1445#0" />
+                <element signature="e#1473#1736#0" />
+                <element signature="e#1564#1697#0" />
+                <element signature="e#1616#1683#0" />
+                <element signature="n#!!block;n#createFancyTreeData#0" />
+                <element signature="e#1877#2234#0" />
+                <element signature="e#2131#2228#0" />
+                <element signature="e#2357#2412#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/routes/tree.js">
+        <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" selection-start-line="9" selection-end-line="9" selection-end-column="63" />
+            <state relative-caret-position="663">
+              <caret line="39" selection-start-line="39" selection-end-line="39" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/viewmodel/tree.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-216">
+              <caret line="11" column="20" selection-end-line="43" selection-end-column="2" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/controllers/employeeController.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="6" selection-start-line="6" selection-end-line="6" />
             </state>
           </provider>
         </entry>
@@ -113,51 +101,16 @@
         <entry file="file://$PROJECT_DIR$/routes/department.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="153">
-              <caret line="12" column="52" selection-start-line="12" selection-start-column="52" selection-end-line="12" selection-end-column="52" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/routes/employee.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="22" column="14" lean-forward="true" selection-start-line="22" selection-start-column="14" selection-end-line="22" selection-end-column="14" />
+              <caret line="9" column="37" lean-forward="true" selection-start-line="9" selection-start-column="37" selection-end-line="9" selection-end-column="37" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/controllers/treeController.js">
+        <entry file="file://$PROJECT_DIR$/views/tree.jade">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="13" lean-forward="true" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/viewmodel/employee.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="11" column="52" selection-start-line="11" selection-start-column="52" selection-end-line="11" selection-end-column="52" />
-              <folding>
-                <element signature="e#97#212#0" />
-                <element signature="e#166#204#0" />
-                <element signature="e#288#387#0" />
-                <element signature="e#317#383#0" />
-                <element signature="e#448#535#0" />
-                <element signature="e#478#531#0" />
-                <element signature="e#495#525#0" />
-                <element signature="e#620#775#0" />
-                <element signature="e#649#716#0" />
-                <element signature="e#718#771#0" />
-                <element signature="e#735#765#0" />
-                <element signature="e#887#1039#0" />
-                <element signature="e#993#1031#0" />
-                <element signature="e#1109#1237#0" />
-                <element signature="e#1191#1229#0" />
-              </folding>
+            <state relative-caret-position="332">
+              <caret line="46" column="33" selection-start-line="46" selection-start-column="33" selection-end-line="46" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -176,7 +129,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>presse</find>
       <find>Список Департаментов</find>
       <find>deleteEmployee</find>
       <find>deleteDepa</find>
@@ -206,6 +158,7 @@
       <find>edit_form</find>
       <find>/Delete/test/</find>
       <find>addDepartment</find>
+      <find>load_employees/</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -260,25 +213,25 @@
         <option value="$PROJECT_DIR$/views/drop_down.jade" />
         <option value="$PROJECT_DIR$/views/add_employees.jade" />
         <option value="$PROJECT_DIR$/common/get-parents.js" />
-        <option value="$PROJECT_DIR$/controllers/employeeController.js" />
         <option value="$PROJECT_DIR$/viewmodel/tree.js" />
-        <option value="$PROJECT_DIR$/views/index.jade" />
         <option value="$PROJECT_DIR$/routes/index.js" />
-        <option value="$PROJECT_DIR$/routes/employee.js" />
         <option value="$PROJECT_DIR$/viewmodel/employee.js" />
         <option value="$PROJECT_DIR$/views/employees.jade" />
-        <option value="$PROJECT_DIR$/views/tree.jade" />
         <option value="$PROJECT_DIR$/common/sqlite.js" />
         <option value="$PROJECT_DIR$/views/add_departments.jade" />
         <option value="$PROJECT_DIR$/views/edit_employees.jade" />
-        <option value="$PROJECT_DIR$/app.js" />
-        <option value="$PROJECT_DIR$/public/static/scripts/tree/tree-routine.js" />
         <option value="$PROJECT_DIR$/views/edit_departments.jade" />
         <option value="$PROJECT_DIR$/routes/tree.js" />
         <option value="$PROJECT_DIR$/controllers/treeController.js" />
-        <option value="$PROJECT_DIR$/viewmodel/department.js" />
+        <option value="$PROJECT_DIR$/controllers/employeeController.js" />
+        <option value="$PROJECT_DIR$/routes/employee.js" />
         <option value="$PROJECT_DIR$/routes/department.js" />
+        <option value="$PROJECT_DIR$/views/index.jade" />
+        <option value="$PROJECT_DIR$/public/static/scripts/tree/tree-routine.js" />
+        <option value="$PROJECT_DIR$/app.js" />
+        <option value="$PROJECT_DIR$/viewmodel/department.js" />
         <option value="$PROJECT_DIR$/controllers/departmentController.js" />
+        <option value="$PROJECT_DIR$/views/tree.jade" />
       </list>
     </option>
   </component>
@@ -317,6 +270,32 @@
               <item name="database_project" type="b2602c69:ProjectViewProjectNode" />
               <item name="database_project" type="462c0819:PsiDirectoryNode" />
               <item name="controllers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="database_project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="database_project" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="database_project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="database_project" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="database_project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="database_project" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="scripts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="database_project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="database_project" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="scripts" type="462c0819:PsiDirectoryNode" />
+              <item name="tree" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="database_project" type="b2602c69:ProjectViewProjectNode" />
@@ -463,7 +442,7 @@
       <workItem from="1556204702638" duration="6257000" />
       <workItem from="1556215880610" duration="16039000" />
       <workItem from="1556259136849" duration="5836000" />
-      <workItem from="1556265207576" duration="1056000" />
+      <workItem from="1556265207576" duration="4541000" />
     </task>
     <task id="LOCAL-00001" summary="added dropdownlists for add_dep">
       <created>1556193204361</created>
@@ -584,11 +563,18 @@
       <option name="project" value="LOCAL" />
       <updated>1556263759163</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="i hope it is working [3]">
+      <created>1556266394232</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1556266394232</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="322465000" />
+    <option name="totallyTimeSpent" value="325950000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -603,13 +589,13 @@
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.30505952" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18973215" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.21767594" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49925596" visible="true" weight="0.2111293" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49925596" visible="true" weight="0.2111293" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.24386252" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -697,7 +683,8 @@
     <MESSAGE value="refactored(peepoClown) tree-routine" />
     <MESSAGE value="i hope it is working" />
     <MESSAGE value="i hope it is working [2]" />
-    <option name="LAST_COMMIT_MESSAGE" value="i hope it is working [2]" />
+    <MESSAGE value="i hope it is working [3]" />
+    <option name="LAST_COMMIT_MESSAGE" value="i hope it is working [3]" />
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="breakpointCondition">
@@ -810,24 +797,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/departments.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" column="60" lean-forward="true" selection-start-line="25" selection-start-column="53" selection-end-line="25" selection-end-column="155" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/test.html" />
     <entry file="file://$PROJECT_DIR$/json.js" />
     <entry file="file://$PROJECT_DIR$/poligon.js" />
     <entry file="file://$PROJECT_DIR$/hehmdaheh.js" />
-    <entry file="file://$PROJECT_DIR$/views/employees.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="23" selection-start-line="9" selection-start-column="23" selection-end-line="9" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/static/scripts/bootstrap.min.js">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -851,13 +824,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/employeeController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-773">
-          <caret line="17" column="23" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/common/sqlite.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -865,162 +831,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/add_departments.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="44" selection-start-line="9" selection-start-column="44" selection-end-line="9" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/add_employees.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="44" selection-start-line="3" selection-start-column="44" selection-end-line="3" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="41" column="16" lean-forward="true" selection-start-line="41" selection-start-column="16" selection-end-line="42" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/jade/lib/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3706">
           <caret line="218" column="37" selection-start-line="218" selection-start-column="37" selection-end-line="218" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/edit_employees.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="44" selection-start-line="10" selection-start-column="44" selection-end-line="10" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/edit_departments.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/index.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="34" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/tree.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="379">
-          <caret line="43" column="79" selection-start-line="43" selection-start-column="66" selection-end-line="43" selection-end-column="79" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/static/scripts/tree/tree-routine.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="48" column="22" selection-start-line="48" selection-start-column="9" selection-end-line="48" selection-end-column="22" />
-          <folding>
-            <element signature="n#!!block;n#logEvent#0" />
-            <element signature="n#!!block;n#testBootBox#0" />
-            <element signature="e#269#609#0" />
-            <element signature="e#373#603#0" />
-            <element signature="e#394#591#0" />
-            <element signature="e#519#577#0" />
-            <element signature="n#!!block;n#loadEmployees#0" />
-            <element signature="e#715#1979#0" />
-            <element signature="e#854#1973#0" />
-            <element signature="e#1038#1569#0" />
-            <element signature="n#li#0;n#!!top" />
-            <element signature="n#p#0;n#!!top" />
-            <element signature="n#!!block;n#addDepartment#0" />
-            <element signature="e#2065#4412#0" />
-            <element signature="e#2154#4406#0" />
-            <element signature="e#2214#3601#0" />
-            <element signature="e#2322#3587#0" />
-            <element signature="e#2352#2606#0" />
-            <element signature="e#2491#2584#0" />
-            <element signature="e#2632#3568#0" />
-            <element signature="e#2770#3546#0" />
-            <element signature="e#2807#3519#0" />
-            <element signature="e#2949#3268#0" />
-            <element signature="e#3323#3489#0" />
-            <element signature="e#3615#4396#0" />
-            <element signature="n#!!block;n#editDepartment#0" />
-            <element signature="e#4601#6965#0" />
-            <element signature="e#4733#6959#0" />
-            <element signature="e#4868#6947#0" />
-            <element signature="e#5040#6933#0" />
-            <element signature="e#5077#6914#0" />
-            <element signature="e#5217#6892#0" />
-            <element signature="e#5255#5557#0" />
-            <element signature="e#5418#5527#0" />
-            <element signature="e#5591#6865#0" />
-            <element signature="e#5758#6835#0" />
-            <element signature="e#5803#6800#0" />
-            <element signature="e#5970#6418#0" />
-            <element signature="e#6481#6762#0" />
-            <element signature="n#!!block;n#deleteDepartment#0" />
-            <element signature="e#7073#8265#0" />
-            <element signature="e#7183#7408#0" />
-            <element signature="e#7206#7291#0" />
-            <element signature="e#7313#7398#0" />
-            <element signature="e#7446#8259#0" />
-            <element signature="e#7472#8249#0" />
-            <element signature="e#7547#8233#0" />
-            <element signature="e#7694#7916#0" />
-            <element signature="e#7957#8215#0" />
-            <element signature="e#7997#8191#0" />
-            <element signature="n#!!block;n#addEmployee#0" />
-            <element signature="e#8421#10584#0" />
-            <element signature="e#8527#10578#0" />
-            <element signature="e#8591#9831#0" />
-            <element signature="e#8699#9817#0" />
-            <element signature="e#8729#8983#0" />
-            <element signature="e#8868#8961#0" />
-            <element signature="e#9009#9798#0" />
-            <element signature="e#9147#9776#0" />
-            <element signature="e#9184#9749#0" />
-            <element signature="e#9324#9548#0" />
-            <element signature="e#9603#9719#0" />
-            <element signature="e#9845#10568#0" />
-            <element signature="n#!!block;n#editEmployee#0" />
-            <element signature="e#10844#13178#0" />
-            <element signature="e#10987#13172#0" />
-            <element signature="e#11016#12352#0" />
-            <element signature="e#11129#12338#0" />
-            <element signature="e#11159#11413#0" />
-            <element signature="e#11298#11391#0" />
-            <element signature="e#11439#12319#0" />
-            <element signature="e#11582#12297#0" />
-            <element signature="e#11619#12270#0" />
-            <element signature="e#11760#12069#0" />
-            <element signature="e#12124#12240#0" />
-            <element signature="e#12366#13162#0" />
-            <element signature="n#!!block;n#deleteEmployee#0" />
-            <element signature="e#13327#14059#0" />
-            <element signature="e#13384#13609#0" />
-            <element signature="e#13407#13492#0" />
-            <element signature="e#13514#13599#0" />
-            <element signature="e#13647#14053#0" />
-            <element signature="e#13673#14043#0" />
-            <element signature="e#13698#14027#0" />
-            <element signature="e#13841#14009#0" />
-            <element signature="e#14079#15896#0" />
-            <element signature="e#14165#15892#0" />
-            <element signature="e#14223#14297#0" />
-            <element signature="e#14472#15574#0" />
-            <element signature="e#14650#15564#0" />
-            <element signature="e#15186#15319#0" />
-            <element signature="e#15333#15465#0" />
-            <element signature="e#15617#15665#0" />
-            <element signature="e#15708#15885#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1033,14 +847,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/models/department.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="18" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="18" />
+        <state relative-caret-position="17">
+          <caret line="1" column="34" selection-start-line="1" selection-start-column="34" selection-end-line="1" selection-end-column="34" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/models/employee.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
+        <state relative-caret-position="144">
           <caret line="13" column="8" selection-start-line="13" selection-start-column="8" selection-end-line="13" selection-end-column="8" />
         </state>
       </provider>
@@ -1069,6 +883,48 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/views/add_employees.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="44" selection-start-line="3" selection-start-column="44" selection-end-line="3" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/departments.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="60" lean-forward="true" selection-start-line="25" selection-start-column="53" selection-end-line="25" selection-end-column="155" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/edit_departments.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/edit_employees.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="44" selection-start-line="10" selection-start-column="44" selection-end-line="10" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/employees.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="23" selection-start-line="9" selection-start-column="23" selection-end-line="9" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/add_departments.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="44" selection-start-line="9" selection-start-column="44" selection-end-line="9" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/routes/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -1076,21 +932,78 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/routes/employee.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="9" column="27" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/index.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="34" selection-start-line="10" selection-start-column="34" selection-end-line="10" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/static/scripts/tree/tree-routine.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="134">
+          <caret line="25" column="23" selection-start-line="25" selection-start-column="14" selection-end-line="25" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/tree.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="31" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="663">
+          <caret line="39" selection-start-line="39" selection-end-line="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/treeController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="37" lean-forward="true" selection-start-line="10" selection-start-column="37" selection-end-line="10" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/employeeController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/department.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="37" lean-forward="true" selection-start-line="9" selection-start-column="37" selection-end-line="9" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/viewmodel/tree.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="332">
-          <caret line="43" column="2" lean-forward="true" selection-end-line="43" selection-end-column="2" />
+        <state relative-caret-position="-216">
+          <caret line="11" column="20" selection-end-line="43" selection-end-column="2" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/viewmodel/department.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1003">
+        <state relative-caret-position="374">
           <caret line="101" column="2" selection-start-line="101" selection-start-column="2" selection-end-line="101" selection-end-column="2" />
           <folding>
             <element signature="e#101#218#0" />
             <element signature="e#172#210#0" />
             <element signature="e#301#476#0" />
+            <element signature="e#332#430#0" />
             <element signature="e#445#472#0" />
             <element signature="e#543#801#0" />
             <element signature="e#575#628#0" />
@@ -1103,60 +1016,31 @@
             <element signature="e#1037#1067#0" />
             <element signature="e#1156#1288#0" />
             <element signature="e#1242#1280#0" />
+            <element signature="e#1292#1294#0" />
+            <element signature="n#!!block;n#listToTree#0" />
+            <element signature="e#1407#1445#0" />
+            <element signature="e#1473#1736#0" />
+            <element signature="e#1564#1697#0" />
+            <element signature="e#1616#1683#0" />
+            <element signature="n#!!block;n#createFancyTreeData#0" />
+            <element signature="e#1877#2234#0" />
+            <element signature="e#2131#2228#0" />
+            <element signature="e#2357#2412#0" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/department.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="12" column="52" selection-start-line="12" selection-start-column="52" selection-end-line="12" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/employee.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="14" lean-forward="true" selection-start-line="22" selection-start-column="14" selection-end-line="22" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/tree.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" selection-start-line="9" selection-end-line="9" selection-end-column="63" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/controllers/departmentController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-297">
-          <caret line="11" column="2" selection-start-line="11" selection-start-column="2" selection-end-line="11" selection-end-column="2" />
-          <folding>
-            <element signature="e#200#371#0" />
-            <element signature="e#307#356#0" />
-            <element signature="e#722#1082#0" />
-            <element signature="e#1029#1078#0" />
-            <element signature="e#1085#1111#0" />
-            <element signature="e#1214#1405#0" />
-            <element signature="e#1319#1401#0" />
-            <element signature="e#1471#1672#0" />
-            <element signature="e#1555#1668#0" />
-            <element signature="e#1739#2099#0" />
-            <element signature="e#2486#3120#0" />
-            <element signature="e#2748#3078#0" />
-            <element signature="e#2864#3066#0" />
-            <element signature="e#3180#3564#0" />
-            <element signature="e#3669#3821#0" />
-            <element signature="e#3781#3817#0" />
-          </folding>
+        <state relative-caret-position="34">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/treeController.js">
+    <entry file="file://$PROJECT_DIR$/views/tree.jade">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="13" lean-forward="true" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        <state relative-caret-position="332">
+          <caret line="46" column="33" selection-start-line="46" selection-start-column="33" selection-end-line="46" selection-end-column="33" />
         </state>
       </provider>
     </entry>

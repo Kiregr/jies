@@ -4,8 +4,15 @@ const router = express.Router();
 //контроллер
 const departmentController = require('../controllers/departmentController');
 
+//
+//
+// Вывод департаментов в виде списка
+router.get('/', departmentController.getData);
+//
+router.get('/reload_tree', departmentController.reloadData);
+
 // Вывод таблицы с департаментами
-router.get('/', departmentController.showTable);
+//router.get('/', departmentController.showTable);
 
 //Добавление департамента
 router.get('/Add', departmentController.addDepartmentGet);

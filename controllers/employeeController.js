@@ -1,6 +1,19 @@
 const employeeViewmodel = require('../viewmodel/employee');
 const departmentViewmodel = require('../viewmodel/department');
 
+//
+//
+//загрузка работяги из департамента
+exports.loadEmployee = function (request, response) {
+    let departmentId = request.params.id;
+
+    employeeViewmodel.findEmployeesFromDepartment(departmentId)
+        .then((employees) => {
+            //console.log(`EMPLOYEES FROM DEPARTMENT: \n ${employees}`);
+            response.send(employees);
+        });
+};
+
 //Вывод таблицы с работягами
 exports.showTable = function (request, response) {
     employeeViewmodel.selectAll()
