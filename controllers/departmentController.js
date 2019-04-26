@@ -18,10 +18,6 @@ exports.addDepartmentGet = function (request, response) {
     departmentViewmodel.selectAll()
         .then((data) => {
             departments = data;
-            var item = {
-                id: 0,
-
-            }
             response.render("add_departments", {departments: departments});
         });
 };

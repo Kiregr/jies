@@ -8,8 +8,8 @@ exports.getData = function (request, response) {
         .then((data) => {
             let treeData = treeViewmodel.genTreeData(data);
 
-            //console.log(`TREEDATA: \n ${treeData}`);
-            response.render('tree', {tree_data: treeData});
+                //console.log(`TREEDATA: \n ${treeData}`);
+                response.render('tree', {tree_data: treeData});
         })
 };
 //получение данных департаментов после обновления

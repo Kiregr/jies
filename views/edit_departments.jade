@@ -1,5 +1,5 @@
 form(method="post", action="/Departments/Edit", id="edit_department_form")
-    input(type="hidden", name="id", value="#{item.id}", id="idOfDepartment")
+    input(type="hidden", name="id", value="#{id}", id="idOfDepartment")
     p Введите имя:
     input(type="text", name="name", value="#{name}", id="nameOfDepartment")
     p Выберите главный департамент:
@@ -13,3 +13,5 @@ form(method="post", action="/Departments/Edit", id="edit_department_form")
                 option(value=parent.Id) #{parent.Name}
     p Введите Inn:
     input(type="text", name="inn", value="#{inn}", id="innOfDepartment")
+
+    //item.id
