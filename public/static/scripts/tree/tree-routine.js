@@ -31,10 +31,17 @@ function loadEmployees(departmentId, departmentName) {
             console.log(JSON.stringify(employees));
             let items = [];
             $.each(employees, function (index, value) {
-                items.push(`<li><b>Имя:</b> ${value.Fullname}; <b>Департамент:</b> ${departmentName} | <button type="button" class="btnEdit" onclick="editEmployee(${value.Id},'${value.Fullname}', ${departmentId}, '${departmentName}')">Редактировать</button> | <button type="button" class="btnDelete" onclick="deleteEmployee(${value.Id}, ${departmentId}, '${departmentName}')">Удалить</button></li>`);
+                items.push(`<li>
+                            <b>Имя:</b> ${value.Fullname}; <b>Департамент:</b> ${departmentName} | 
+                            <button type="button" class="btnEdit" onclick="editEmployee(${value.Id},'${value.Fullname}', ${departmentId}, '${departmentName}')">Редактировать</button> |
+                            <button type="button" class="btnDelete" onclick="deleteEmployee(${value.Id}, ${departmentId}, '${departmentName}')">Удалить</button>
+                            </li>`);
             });
             let employee_list = items.join('');
-            $("#employees").html(`<p>Работяги из ${departmentName} | <button type="button" class="btnAdd" onclick="addEmployee(${departmentId}, '${departmentName}')">Добавить</button></p> <ul>${employee_list}</ul>`);
+            $("#employees").html(`<p>Работяги из ${departmentName} | 
+                                            <button type="button" class="btnAdd" onclick="addEmployee(${departmentId}, '${departmentName}')">Добавить</button>
+                                        </p> 
+                                        <ul>${employee_list}</ul>`);
         }
     });
 }
@@ -184,6 +191,7 @@ function deleteDepartment(departmentId) {
                     success: function () {
                         let tree = $('#tree').fancytree('getTree');
                         tree.reload();
+                        $("#employees").html("<p>Департамент с работягами был удален</p>");
                     },
                     error: function () {
                         bootbox.alert({

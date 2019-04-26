@@ -3,9 +3,12 @@ const getParents = require('../common/get-parents');
 
 //Вывод таблицы с департаментами
 exports.showTable = function (request, response) {
-    departmentViewmodel.selectAll().then((data) => {
-        response.render("departments", {departments: data});
-    })
+    departmentViewmodel.selectAll()
+        .then((data) => {
+            response.render("departments", {
+                departments: data
+            });
+        })
 };
 
 //Добавление департамента
@@ -15,6 +18,10 @@ exports.addDepartmentGet = function (request, response) {
     departmentViewmodel.selectAll()
         .then((data) => {
             departments = data;
+            var item = {
+                id: 0,
+
+            }
             response.render("add_departments", {departments: departments});
         });
 };
