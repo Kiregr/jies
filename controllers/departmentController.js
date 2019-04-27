@@ -38,7 +38,7 @@ exports.addDepartmentGet = function (request, response) {
     departmentViewmodel.selectAll()
         .then((data) => {
             departments = data;
-            response.render("add_departments", {departments: departments});
+            response.render("departments_form", {departments: departments});
         });
 };
 exports.addDepartmentPost = function (request, response) {
@@ -131,8 +131,27 @@ exports.editDepartmentPost = function (request, response) {
 //Редактирование департамента по его id
 exports.editDepartmentViaIdGet = function (request, response) {
     let departmentId = request.params.id;
-    departmentViewmodel.findDepartment(departmentId).then((data) => {
-        response.send(data);
-    });
+    let departmentParentId;
+    let departmentName;
+    let departmentInn;
+    let parents;
+
+    departmentViewmodel.findDepartment(departmentId)
+    .then((data) => {
+        departmentParentId = data.ParentId;
+        departmentName = data.Name;
+        departmentInn = data.Inn;
+    })
+    .then(departmentViewmodel.selectAll()
+    .then((data) => {
+        parents = getParents.findParents(data, departmentId);
+        response.render("departments_form", {
+            departments: parents,
+            id: departmentId,
+            name: departmentName,
+            parentId: departmentParentId,
+            inn: departmentInn
+        });
+    }));
 };
 

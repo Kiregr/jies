@@ -24,10 +24,9 @@ router.delete('/Delete/test/:id', departmentController.deleteDepartment);
 
 //Редактирование департамента
 router.get('/Edit', departmentController.editDepartmentGet);
+router.get('/Edit/:id', departmentController.editDepartmentViaIdGet);
 router.post('/Edit', departmentController.editDepartmentPost);
 
-//вывод департамента по его id
-router.get('/:id', departmentController.editDepartmentViaIdGet);
 //поиск департаментов, но которые может ссылаться указанный департамент
 router.get('/Parents/:id', departmentController.getParents);
 

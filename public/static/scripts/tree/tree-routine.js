@@ -46,16 +46,18 @@ function loadEmployees(departmentId, departmentName) {
     });
 }
 
-function addDepartment() {
-    console.log("Adding new department");
+// добавление/редактирование департамента
+function departmentAddEditForm(departmentId) {
+
+    console.log(departmentId ? 'Редактировать департамент' : `Добавить департамент`);
+
     $.ajax({
-        url: '/Departments/Add',
+        url: departmentId ? `/Departments/Edit/${departmentId}` : `/Departments/Add`,
         type: 'GET',
-        success: function (data) {
-            console.log(data);
+        success: function (form) {
             bootbox.dialog({
-                title: 'Добавление департаменов',
-                message: data,
+                title: departmentId ? 'Редактировать' : 'Добавить',
+                message: form,
                 buttons: {
                     cancel: {
                         label: "Отмена!",
@@ -65,17 +67,13 @@ function addDepartment() {
                         }
                     },
                     ok: {
-                        label: "Добавить",
+                        label: departmentId ? 'Редактировать' : `Добавить`,
                         className: 'btn-info',
                         callback: function () {
                             $.ajax({
-                                url: `Departments/Add`,
+                                url: departmentId ? `Departments/Edit` : `/Departments/Add`,
                                 type: "POST",
-                                data: {
-                                    parentId: document.getElementById('parentIdOfDepartment').value,
-                                    name: document.getElementById('nameOfDepartment').value,
-                                    inn: document.getElementById('innOfDepartment').value
-                                },
+                                data: $(this).find($("form")).serialize(),
                                 success: function () {
                                     let tree = $('#tree').fancytree('getTree');
                                     tree.reload();
@@ -85,83 +83,6 @@ function addDepartment() {
                     },
                 }
             })
-            /*
-            bootbox.confirm(data, function (result) {
-                if (result) {
-                    $.ajax({
-                        url: `Departments/Add`,
-                        type: "POST",
-                        data: {
-                            parentId: document.getElementById('parentIdOfDepartment').value,
-                            name: document.getElementById('nameOfDepartment').value,
-                            inn: document.getElementById('innOfDepartment').value
-                        },
-                        success: function () {
-                            let tree = $('#tree').fancytree('getTree');
-                            tree.reload();
-                        }
-                    })
-                }
-            });
-             */
-        }
-    });
-}
-
-function editDepartment(departmentId) {
-    console.log(`Editing departement Id: ${departmentId}`);
-    let id = departmentId;
-    let name;
-    let parentId;
-    let inn;
-    $.ajax({
-        url: `departments/${departmentId}`,
-        type: 'GET',
-        dataType: 'json',
-        success: function (department) {
-            name = department.Name;
-            parentId = department.ParentId;
-            inn = department.Inn;
-            $.ajax({
-                url: `/Departments/Edit?id=${id}&parentId=${parentId}&name=${name}&inn=${inn}`,
-                type: 'GET',
-                success: function (editForm) {
-                    bootbox.dialog({
-                        title: 'Редактирование департаменов',
-                        message: editForm,
-                        buttons: {
-                            cancel: {
-                                label: "Отмена!",
-                                className: 'btn-danger',
-                                callback: function () {
-                                    console.log('Custom cancel clicked');
-                                }
-                            },
-                            ok: {
-                                label: "Редактировать",
-                                className: 'btn-info',
-                                callback: function () {
-                                    $.ajax({
-                                        url: `Departments/Edit`,
-                                        type: "POST",
-                                        data: {
-                                            id: document.getElementById('idOfDepartment').value,
-                                            parentId: document.getElementById('parentIdOfDepartment').value,
-                                            name: document.getElementById('nameOfDepartment').value,
-                                            inn: document.getElementById('innOfDepartment').value
-                                        },
-                                        success: function () {
-                                            let tree = $('#tree').fancytree('getTree');
-                                            tree.reload();
-                                            //loadEmployees(departmentId, departmentName);
-                                        }
-                                    })
-                                }
-                            },
-                        }
-                    })
-                }
-            });
         }
     });
 }
@@ -376,7 +297,7 @@ $(function () {
             // check if span of node already rendered
             if (!$nodeSpan.data('rendered')) {
 
-                let editButton = $(`<button type="button" class="btnEdit" onclick="editDepartment(${data.node.key})">Редактировать ${data.node.key}</button>`);
+                let editButton = $(`<button type="button" class="btnEdit" onclick="departmentAddEditForm(${data.node.key})">Редактировать ${data.node.key}</button>`);
                 let deleteButton = $(`<button type="button" class="btnDelete" onclick="deleteDepartment(${data.node.key})">Удалить ${data.node.key}</button>`);
 
                 $nodeSpan.append(editButton);
