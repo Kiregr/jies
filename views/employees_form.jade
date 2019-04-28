@@ -1,0 +1,14 @@
+form(method="post", action=(id ? "/Employees/Edit": "/Employees/Add"))
+    p Введите имя:
+    input(type="text", name="name", value=(id ? "#{name}" : ""))
+    if id
+        input(type="hidden", name="id", value="#{id}")
+        p Выберите главный департамент:
+        select(name='departmentId')
+            each department in departments
+                if department.Id == departmentId
+                    option(selected="", value=department.Id) #{department.Name}
+                else
+                    option(value=department.Id) #{department.Name}
+    else
+        input(type="hidden", name="departmentId", value="#{departmentId}")

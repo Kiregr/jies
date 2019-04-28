@@ -1,51 +1,3 @@
-function logEvent(event, data, msg) {
-    //        var args = $.isArray(args) ? args.join(", ") :
-    msg = msg ? ": " + msg : "";
-    $.ui.fancytree.info("Event('" + event.type + "', node=" + data.node + ")" + msg);
-}
-
-function testBootBox(departmentId) {
-    $.ajax({
-        url: `departments/parents/${departmentId}`,
-        type: 'GET',
-        success: function () {
-            $.ajax({
-                url: '/Departments/drop_down/form?',
-                type: 'GET',
-                success: function (data) {
-                    console.log(data);
-                }
-            });
-        }
-    })
-}
-
-function loadEmployees(departmentId, departmentName) {
-    console.log("LOAD EMPLOYEES");
-    $.ajax({
-        url: `employees/load_employees/${departmentId}`,
-        type: 'GET',
-        dataType: 'json',
-        success: function (employees) {
-            console.log("LOAD EMPLOYEES AJAX");
-            console.log(JSON.stringify(employees));
-            let items = [];
-            $.each(employees, function (index, value) {
-                items.push(`<li>
-                            <b>Имя:</b> ${value.Fullname}; <b>Департамент:</b> ${departmentName} | 
-                            <button type="button" class="btnEdit" onclick="editEmployee(${value.Id},'${value.Fullname}', ${departmentId}, '${departmentName}')">Редактировать</button> |
-                            <button type="button" class="btnDelete" onclick="deleteEmployee(${value.Id}, ${departmentId}, '${departmentName}')">Удалить</button>
-                            </li>`);
-            });
-            let employee_list = items.join('');
-            $("#employees").html(`<p>Работяги из ${departmentName} | 
-                                            <button type="button" class="btnAdd" onclick="addEmployee(${departmentId}, '${departmentName}')">Добавить</button>
-                                        </p> 
-                                        <ul>${employee_list}</ul>`);
-        }
-    });
-}
-
 // добавление/редактирование департамента
 function departmentAddEditForm(departmentId) {
 
@@ -86,7 +38,7 @@ function departmentAddEditForm(departmentId) {
         }
     });
 }
-
+// удаление пепартамента
 function deleteDepartment(departmentId) {
     console.log(`Deleting department`);
     bootbox.confirm({
@@ -126,18 +78,17 @@ function deleteDepartment(departmentId) {
         }
     });
 }
+// добаление/редактирование работяги
+function employeeAddEditForm(employeeId, departmentId) {
+    console.log(employeeId ? 'Редактировать работягу' : `Добавить работягу`);
 
-function addEmployee(departmentId, departmentName) {
-    console.log(`Adding employee to ${departmentId} id; Title: "${departmentName}"`);
     $.ajax({
-        url: `/Employees/Add/${departmentId}`,
+        url: employeeId ? `/Employees/Edit/${employeeId}` : `/Employees/Add/${departmentId}`,
         type: 'GET',
-        success: function (addForm) {
-            console.log(addForm);
-
+        success: function (form) {
             bootbox.dialog({
-                title: 'Добавление работника',
-                message: addForm,
+                title: departmentId ? 'Редактировать' : 'Добавить',
+                message: form,
                 buttons: {
                     cancel: {
                         label: "Отмена!",
@@ -147,111 +98,26 @@ function addEmployee(departmentId, departmentName) {
                         }
                     },
                     ok: {
-                        label: "Добавить",
+                        label: employeeId ? 'Редактировать' : `Добавить`,
                         className: 'btn-info',
                         callback: function () {
                             $.ajax({
-                                url: `Employees/Add`,
+                                url: employeeId ? `Employees/Edit` : `/Employees/Add`,
                                 type: "POST",
-                                data: {
-                                    name: document.getElementById('nameOfEmployee').value,
-                                    departmentId: document.getElementById('idOfDepartment').value
-                                },
+                                data: $(this).find($("form")).serialize(),
                                 success: function () {
-                                    loadEmployees(departmentId, departmentName);
+                                    loadEmployees(departmentId);
                                 }
                             })
                         }
                     },
                 }
             })
-            /*
-            bootbox.confirm(addForm, function (result) {
-                if (result) {
-                    console.log("addEmployees() -> loadEmployees()");
-                    $.ajax({
-                        url: `Employees/Add`,
-                        type: "POST",
-                        data: {
-                            name: document.getElementById('nameOfEmployee').value,
-                            departmentId: document.getElementById('idOfDepartment').value
-                        },
-                        success: function () {
-                            loadEmployees(departmentId, departmentName);
-                        }
-                    })
-                }
-            });
-             */
         }
     });
-
 }
-
-function editEmployee(employeeId, employeeName, employeeDepartmentId, departmentName) {
-    console.log(`Editing employee ID: ${employeeId}`);
-    let id = employeeId;
-    let departmentId = employeeDepartmentId;
-    let name = employeeName;
-    $.ajax({
-        url: `/Employees/Edit?id=${id}&departmentId=${departmentId}&name=${name}`,
-        type: 'GET',
-        success: function (editForm) {
-            bootbox.dialog({
-                title: 'Редактирование работника',
-                message: editForm,
-                buttons: {
-                    cancel: {
-                        label: "Отмена!",
-                        className: 'btn-danger',
-                        callback: function () {
-                            console.log('Custom cancel clicked');
-                        }
-                    },
-                    ok: {
-                        label: "Редактировать",
-                        className: 'btn-info',
-                        callback: function () {
-                            $.ajax({
-                                url: `Employees/Edit`,
-                                type: "POST",
-                                data: {
-                                    id: document.getElementById('idOfEmployee').value,
-                                    name: document.getElementById('nameOfEmployee').value,
-                                    departmentId: document.getElementById('departmentId').value
-                                },
-                                success: function () {
-                                    loadEmployees(departmentId, departmentName);
-                                }
-                            })
-                        }
-                    },
-                }
-            })
-            /*
-            bootbox.confirm(editForm, function (res) {
-                if (res) {
-                    console.log("editEmployee() -> loadEmployees()");
-                    $.ajax({
-                        url: `Employees/Edit`,
-                        type: "POST",
-                        data: {
-                            id: document.getElementById('idOfEmployee').value,
-                            name: document.getElementById('nameOfEmployee').value,
-                            departmentId: document.getElementById('departmentId').value
-                        },
-                        success: function () {
-                            loadEmployees(departmentId, departmentName);
-                        }
-                    })
-                }
-            });
-             */
-        }
-    })
-}
-
-function deleteEmployee(employeeId, departmentId, departmentName) {
+// удаление работяги
+function deleteEmployee(employeeId, departmentId) {
     console.log(`Deleting employee Id: ${employeeId}`);
     bootbox.confirm({
         message: "Удалить работягу?",
@@ -272,14 +138,40 @@ function deleteEmployee(employeeId, departmentId, departmentName) {
                     type: 'DELETE',
                     success: function () {
                         console.log("deleteEmployee() -> loadEmployees()");
-                        loadEmployees(departmentId, departmentName);
+                        loadEmployees(departmentId);
                     }
                 });
             }
         }
     });
 }
-
+// загрузка списка работяг
+function loadEmployees(departmentId) {
+    console.log("LOAD EMPLOYEES");
+    $.ajax({
+        url: `employees/load_employees/${departmentId}`,
+        type: 'GET',
+        dataType: 'json',
+        success: function (employees) {
+            console.log("LOAD EMPLOYEES AJAX");
+            console.log(JSON.stringify(employees));
+            let items = [];
+            $.each(employees, function (index, value) {
+                items.push(`<li>
+                            <b>Имя:</b> ${value.Fullname}; <b>Департамент:</b> ${value.DepartmentName} | 
+                            <button type="button" class="btnEdit" onclick="employeeAddEditForm(${value.Id}, ${departmentId})">Редактировать</button> |
+                            <button type="button" class="btnDelete" onclick="deleteEmployee(${value.Id}, ${departmentId})">Удалить</button>
+                            </li>`);
+            });
+            let employee_list = items.join('');
+            $("#employees").html(`<p>Список работяг | 
+                                            <button type="button" class="btnAdd" onclick="employeeAddEditForm(0, ${departmentId})">Добавить</button>
+                                        </p> 
+                                        <ul>${employee_list}</ul>`);
+        }
+    });
+}
+// fancytree
 $(function () {
     // Create the tree inside the <div id="tree"> element.
     $("#tree").fancytree({
@@ -324,7 +216,7 @@ $(function () {
         },
         activate: function (event, data) {
             console.log(`Fanctytree "activate" -> loadEmployees(${data.node.key}, "${data.node.title}")`);
-            loadEmployees(data.node.key, data.node.title);
+            loadEmployees(data.node.key);
         },
     });
 });

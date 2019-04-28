@@ -1,5 +1,4 @@
 form(method="post", action=(id ? "/Departments/Edit": "/Departments/Add"))
-    //form(method="post", action="/Departments/Add", id="add_department_form")
     if id
         input(type="hidden", name="id", value="#{id}", id="idOfDepartment")
     p Введите имя:

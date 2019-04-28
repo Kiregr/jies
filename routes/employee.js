@@ -22,6 +22,7 @@ router.delete('/Delete/test/:id', employeeController.deleteEmployee);
 
 //Редактирование работяги
 router.get('/Edit', employeeController.editEmployeeGet);
+router.get('/Edit/:id', employeeController.editEmployeeViaIdGet);
 router.post('/Edit', employeeController.editEmployeePost);
 
 //вывод работяги по его id

@@ -8,6 +8,7 @@ const departmentController = require('../controllers/departmentController');
 //
 // Вывод департаментов в виде списка
 router.get('/', departmentController.getData);
+
 //
 router.get('/reload_tree', departmentController.reloadData);
 

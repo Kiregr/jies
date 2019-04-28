@@ -2,8 +2,8 @@ const Department = require('../models/department');
 
 //Вывод таблицы
 exports.selectAll = function () {
-    return Department.findAll({raw: true}).then(
-        (result) => {
+    return Department.findAll({raw: true})
+        .then((result) => {
             return result;
         }
     )
@@ -52,6 +52,15 @@ exports.findDepartment = function (departmentId) {
             return result;
         }
     )
+};
+
+//Вывод названий департаментов
+exports.findDepartmentName = function (id) {
+    return Department.findByPk(id, {
+        raw: true,
+        attributes: ['Name'],
+        })
+        .then((result) => {return result.Name});
 };
 
 
